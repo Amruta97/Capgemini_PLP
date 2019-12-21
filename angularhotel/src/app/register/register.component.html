@@ -1,0 +1,70 @@
+<div class="col-md-4 page-scroll offset-4 mt-5 jumbotron">
+    <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)">
+        <h4>Register Form</h4>
+        <div class="alert alert-danger" *ngIf='error'>{{error}}</div>
+
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="enter your name" #name="ngModel" ngModel
+                required pattern="[A-Za-z\s]{3,10}">
+            <div *ngIf='name.dirty && name.invalid'>
+                <p class="text-danger" *ngIf='name.errors.required'>*field is mandatory</p>
+                <p class="text-danger" *ngIf='name.errors.pattern'>*Enter valid name</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="enter email"name="email" #email="ngModel" ngModel required
+                pattern="[^ @]*@[a-zA-Z]+(.com)">
+            <div *ngIf='email.touched && email.invalid'>
+                <p class="text-danger" *ngIf='email.errors.required'>*field is mandatory</p>
+                <p class="text-danger" *ngIf='email.errors.pattern'>*Enter valid email id</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="enter password" #password="ngModel"
+                ngModel pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,8}$" required>
+            <div *ngIf='password.touched && password.invalid'>
+                <p class="text-danger" *ngIf='password.errors.required'>*field is mandatory</p>
+                <p class="text-danger" *ngIf='password.errors.pattern'>*password contains A-Z a-z 0-9 upto 8 length</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="enter contactNo"name="contactNo" #contactNo="ngModel" ngModel required
+                pattern="[7,8,9][0-9]{9}">
+            <div *ngIf='contactNo.touched && contactNo.invalid'>
+                <p class="text-danger" *ngIf='contactNo.errors.required'>*field is mandatory</p>
+                <p class="text-danger" *ngIf='contactNo.errors.pattern'>*Contact No start with 7,8,9</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="enter address"name="address" #address="ngModel" ngModel required>
+            <div *ngIf='address.touched && address.invalid'>
+                <p class="text-danger" *ngIf='address.errors.required'>*field is mandatory</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <select name="nationality" id="" class="form-control" #nationality="ngModel" ngModel required>
+                <option value="indian">Indian</option>
+                
+            </select>
+            <div *ngIf='nationality.touched && nationality.invalid'>
+                <p class="text-danger" *ngIf='nationality.errors.required'>*field is mandatory</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <select name="type" id="" class="form-control" #type="ngModel" ngModel required>
+                <option value="user">User</option>
+                <option value="employee">Employee</option>
+            </select>
+            <div *ngIf='type.touched && type.invalid'>
+                <p class="text-danger" *ngIf='type.errors.required'>*field is mandatory</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary float-right" type="submit"
+                [disabled]="registerForm.invalid">Register</button>
+            <span class="text-danger" *ngIf='errorMessage'>{{errorMessage}}</span>
+            <span class="text-success" *ngIf='successMessage'>{{successMessage}}</span>
+        </div>
+
+    </form>
+</div>

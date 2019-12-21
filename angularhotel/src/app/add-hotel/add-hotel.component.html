@@ -1,0 +1,51 @@
+<app-admin></app-admin>
+<router-outlet></router-outlet>
+
+<div class=" col-md-4 m-auto mt-5">
+    <div class="container card card-body">
+        <h3>Add Hotel form</h3>
+    <form #addHotelForm="ngForm" (ngSubmit)="addHotel(addHotelForm)">
+        <div class="form-group">
+            <label for="hotelName">Hotel Name:</label>
+            <input type="text" name="hotelName" class="form-control"
+            #hotelName="ngModel" ngModel required>
+        </div>
+        <div class="form-group">
+            <label for="hotelLocation">Hotel Location:</label>
+            <input type="text" name="hotelLocation" class="form-control"
+            #hotelLocation="ngModel" ngModel required>
+            
+        </div>
+        <div class="btn-group float-right">
+            <button type="submit" class="btn btn-outline-primary"
+            [disabled]='addHotelForm.invalid'>Add Hotel</button>
+        </div>
+    </form>
+    </div>
+</div>
+<div class=" col-md-4 m-auto mt-5">
+    <div class="container card card-body">
+    <form #addRoomForm="ngForm" (ngSubmit)="addRoom(addRoomForm)">
+        <div class="form-group">
+            <label for="roomRent">Room Rent:</label>
+            <input type="text" name="roomRent" class="form-control"
+            #roomRent="ngModel" ngModel required> 
+        </div>
+        <div class="form-group">
+            <label for="roomType">Room Type:</label>
+            <input type="text" name="roomType" class="form-control"
+            #roomType="ngModel" ngModel required> 
+        </div>
+        <div class="form-group">
+            <label for="roomCapacity">Room Capacity:</label>
+            <input type="text" name="roomCapacity" class="form-control"
+            #roomCapacity="ngModel" ngModel required> 
+        </div>
+        <div class="btn-group float-right">
+            <button type="submit" class="btn btn-outline-primary"
+            [disabled]='addRoomForm.invalid'>Add Room</button>
+        </div>
+    </form>
+    </div>
+</div>
+
